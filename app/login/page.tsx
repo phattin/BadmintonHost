@@ -1,7 +1,20 @@
-export default function Login(){
-    return (
-        <div>
-            
-        </div>
-    )
+import LoginForm from "../components/LoginForm";
+
+export default function Login() {
+  return (
+    <main className="relative isolate flex min-h-screen items-center justify-center overflow-hidden">
+      <div
+        className="absolute -inset-8 -z-20 scale-110 bg-cover bg-center blur-md"
+        style={{
+          backgroundImage: "url('/anhnencl.jpg')",
+        }}
+      />
+
+      <div className="absolute inset-0 -z-10 bg-[#021c0d]/75" />
+
+      <div className="relative z-10">
+        <LoginForm />
+      </div>
+    </main>
+  );
 }
