@@ -1,12 +1,13 @@
-import { InputHTMLAttributes, ReactNode, } from "react"
+import { SelectHTMLAttributes, ReactNode, } from "react"
+import { ChevronDown } from "lucide-react";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement>{
     label: string;
     icon?: ReactNode;
-    rightIcon?: ReactNode;
+    children: ReactNode;
 }
 
-export default function Input({label, id, icon, rightIcon, className="", ...props}: InputProps){
+export default function Select({label, id, icon, children, className="", ...props}: SelectProps){
     return(
         <div className="mt-5 flex w-full flex-col gap-1">
             <label className="text-sb text-[14px] font-semibold text-text" htmlFor={id}>{label}</label> 
@@ -16,11 +17,12 @@ export default function Input({label, id, icon, rightIcon, className="", ...prop
                         {icon}
                     </div>
                 )}
-                <input
+                <select
                 id={id}
                 {...props}
                 className={`
                     w-full
+                    appearance-none
                     rounded-lg
                     border
                     border-placeholder
@@ -29,20 +31,19 @@ export default function Input({label, id, icon, rightIcon, className="", ...prop
                     text-sm
                     text-text
                     outline-none
-                    placeholder:text-placeholder
                     focus:border-button
                     focus:ring-2
                     focus:ring-button/20
                     ${icon ? "pl-10" : "pl-3"}
-                    ${rightIcon ? "pr-10" : "pr-3"}
+                    pr-10
                     ${className}
                 `}
-                />
-                {rightIcon && (
-                    <div className="absolute right-3 top-1/2 -translate-y-1/2 text-placeholder">
-                        {rightIcon}
-                    </div>
-                )}
+                >
+                {children}
+                </select>
+                <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-placeholder">
+                 <ChevronDown size={18} />
+                </div>
             </div>
         </div>
     )
