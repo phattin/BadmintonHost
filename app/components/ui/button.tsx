@@ -23,7 +23,7 @@ export default function Button({
         py-3.5
         text-[14px]
         font-bold
-        text-text
+        text-white
         transition
         hover:opacity-90
         active:scale-[0.99]
