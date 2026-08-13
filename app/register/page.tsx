@@ -1,7 +1,7 @@
-import LoginPanel from "../components/LoginPanel";
+import RegisterPanel from "../components/RegisterPanel";
 import AuthCard from "../components/AuthCard";
 
-export default function Login() {
+export default function Register() {
   return (
     <main className="relative isolate flex min-h-screen items-center justify-center overflow-hidden">
       <div
@@ -16,7 +16,7 @@ export default function Login() {
       <div className="relative z-10">
         <div className="flex bg-white overflow-hidden rounded-2xl items-stretch">
           <AuthCard />
-          <LoginPanel />
+          <RegisterPanel />
         </div>
       </div>
     </main>
