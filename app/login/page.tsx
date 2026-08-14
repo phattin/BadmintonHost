@@ -1,4 +1,4 @@
-import LoginPanel from "../components/LoginPanel";
+import LoginPanel from "./LoginPanel";
 import AuthCard from "../components/AuthCard";
 
 export default function Login() {

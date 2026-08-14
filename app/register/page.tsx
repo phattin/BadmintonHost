@@ -1,4 +1,4 @@
-import RegisterPanel from "../components/RegisterPanel";
+import RegisterPanel from "./RegisterPanel";
 import AuthCard from "../components/AuthCard";
 
 export default function Register() {

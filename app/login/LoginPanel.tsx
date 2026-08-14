@@ -1,11 +1,15 @@
-import Input from "./ui/input";
-import Button from "./ui/button";
-import AuthCard from "./AuthCard";
+"use client";
+
+import {useState} from "react";
+import Input from "../components/ui/input";
+import Button from "../components/ui/button";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import { Eye, Lock, Mail, LogIn } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 
 export default function LoginPanel() {
+    const [showPassword, setShowPassword] = useState(false);
+
   return (
       <div className="w-[60%] h-full p-12">
         <h2 className="font-extrabold text-5xl text-button">
@@ -21,14 +25,18 @@ export default function LoginPanel() {
         <Input
           id="password"
           label="Mật khẩu:"
-          type="password"
+          type={ showPassword ? "text" : "password" }
           placeholder="Nhập mật khẩu của bạn"
           icon={<Lock size={18} />}
-          rightIcon={<Eye size={18} />}
+          rightIcon={
+            <button type="button" onClick={() => setShowPassword(!showPassword)} className="cursor-pointer text-placeholder">
+              { showPassword ? (<EyeOff size={18} />): (<Eye size={18} />) }
+            </button>
+          }
         />
         <a className="flex w-fit mt-3 ml-auto text-text font-bold" href="#">Quên mật khẩu</a>
 
-        <Button className="mt-3" icon={<LogIn size={18} />}>
+        <Button className="mt-3">
         Đăng nhập
         </Button>
 
