@@ -1,12 +1,15 @@
-import Input from "./ui/input";
-import Select from "./ui/select";
-import Button from "./ui/button";
-import AuthCard from "./AuthCard";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
-import { User, Phone, UserPlus, Lock, Mail, Eye, EyeOff, Gauge } from "lucide-react";
+"use client";
+
+import {useState} from "react";
+import Input from "../components/ui/input";
+import Select from "../components/ui/select";
+import Button from "../components/ui/button";
+import { User, Phone, Lock, Mail, Eye, EyeOff, Gauge } from "lucide-react";
 
 export default function RegisterPanel() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRePassword, setShowRePassword] = useState(false);
+
   return (
       <div className="w-[60%] h-full p-12">
         <h2 className="font-extrabold text-5xl text-button">
@@ -42,9 +45,11 @@ export default function RegisterPanel() {
         <Input
           id="phone"
           label="Số điện thoại:"
-          type="number"
+          type="tel"
+          inputMode="numeric"
           placeholder="Nhập số điện thoại của bạn"
           icon={<Phone size={18} />}
+          onInput={(e) => {e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "")}}
         />  
         <Input
           id="email"
@@ -56,21 +61,29 @@ export default function RegisterPanel() {
         <Input
           id="password"
           label="Mật khẩu:"
-          type="password"
+          type={ showPassword ? "text" : "password" }
           placeholder="Nhập mật khẩu của bạn"
           icon={<Lock size={18} />}
-          rightIcon={<Eye size={18} />}
+          rightIcon={
+            <button type="button" onClick={() => setShowPassword(!showPassword)} className="cursor-pointer text-placeholder">
+              { showPassword ? (<EyeOff size={18} />): (<Eye size={18} />) }
+            </button>
+          }
         />
         <Input
           id="repassword"
           label="Xác nhận mật khẩu:"
-          type="password"
+          type={ showRePassword ? "text" : "password" }
           placeholder="Nhập lại mật khẩu của bạn"
           icon={<Lock size={18} />}
-          rightIcon={<Eye size={18} />}
+          rightIcon={
+            <button type="button" onClick={() => setShowRePassword(!showRePassword)} className="cursor-pointer text-placeholder">
+              { showRePassword ? (<EyeOff size={18} />): (<Eye size={18} />) }
+            </button>
+          }
         />
 
-        <Button className="mt-3" icon={<UserPlus size={18} />}>
+        <Button className="mt-3" >
         Đăng ký
         </Button>
 
