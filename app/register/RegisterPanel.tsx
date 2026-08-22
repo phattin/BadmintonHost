@@ -15,33 +15,14 @@ export default function RegisterPanel() {
         <h2 className="font-extrabold text-5xl text-button">
             Đăng ký
         </h2>
-        <div className="flex gap-5">
-            <Input
-            id="name"
-            label="Họ và tên:"
-            type="text"
-            className="w-[60%]"
-            placeholder="Nhập tên của bạn"
-            icon={<User size={18} />}
-            />
-            <Select
-            id="level"
-            label="Trình độ:"
-            className="w-[40%]"
-            icon={<Gauge size={18} />}
-            defaultValue=""
-            >
-                <option value="" disabled>
-                    Chọn trình độ
-                </option>
-                <option value="Newbie">
-                    Newbie
-                </option>
-                <option value="Y">
-                    Yếu
-                </option>
-            </Select>
-        </div>
+        <Input
+        id="name"
+        label="Họ và tên:"
+        type="text"
+        className="w-[60%]"
+        placeholder="Nhập tên của bạn"
+        icon={<User size={18} />}
+        />
         <Input
           id="phone"
           label="Số điện thoại:"
